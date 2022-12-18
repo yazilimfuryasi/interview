@@ -25,17 +25,26 @@
                         <img src="{{ i.image }}" style="cursor: zoom-in;" data-bs-toggle="modal" data-bs-target="#id{{ forloop.counter }}" width="300" height="300">
                     {% comment %} </a> {% endcomment %}
                     <div class="modal fade" id="id{{ forloop.counter }}" tabindex="-1" aria-labelledby="id{{ forloop.counter }}" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered text-start">
+                        <div class="modal-dialog modal-dialog-centered text-start" style="max-width:400px;">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="id{{ forloop.counter }}">NFT Attributes</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    <img src="{{ i.image }}" width="1**" height="100">
-                                    {% for k in i.attributes %}
-                                        <p class="card-text">{{ k.trait_type }} {{ k.value }}</p>
-                                    {% endfor %}
+                                <div class="modal-body text-center">
+                                    <img src="{{ i.image }}" style="margin-bottom: 25px;" width="100" height="100">
+                                        <div class="text-start lh-1 py-1 mb-3 bg-warning border rounded-3">
+                                            {% for k in i.attributes %}
+                                                <div class="row" style="margin-left:20px;">
+                                                    <div class="col-6">
+                                                        <p class="card-text">{{ k.trait_type }}</p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p class="card-text">{{ k.value }}</p>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
