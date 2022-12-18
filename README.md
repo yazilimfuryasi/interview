@@ -12,4 +12,4 @@
 Çalıştırmak için;
 <pre>source venv/Scripts/activate</pre>
 
-<pre>python manage.py runserver</pre>
+<pre>python interview/manage.py runserver</pre>
