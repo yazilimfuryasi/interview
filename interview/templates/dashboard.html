@@ -3,18 +3,49 @@
 {% block content %}
 
 <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container d-flex align-items-center justify-content-center">
-        <ul class="navbar-nav">
+    <div class="container-fluid d-flex align-items-center justify-content-center">
+        <ul class="navbar-nav text-center">
             <li class="nav-item">
                 <p class="nav-link" >Welcome {{ user }}</p>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Exit</a>
+                <a class="nav-link active" href="{% url 'logout' %}">Exit</a>
             </li>
-        </div>
         </ul>
     </div>
-  </nav>
+</nav>
+
+<div class"container" style="margin-top:53px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h3 class="text-center" style="margin-bottom:23px;">NFT Gallery</h3>
+            {% for i in data %}
+                <div class="col-lg-3 p-2 m-2 text-center shadow border rounded-4">
+                    {% comment %} <a href="#"> {% endcomment %}
+                        <img src="{{ i.image }}" style="cursor: zoom-in;" data-bs-toggle="modal" data-bs-target="#id{{ forloop.counter }}" width="300" height="300">
+                    {% comment %} </a> {% endcomment %}
+                    <div class="modal fade" id="id{{ forloop.counter }}" tabindex="-1" aria-labelledby="id{{ forloop.counter }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered text-start">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="id{{ forloop.counter }}">NFT Attributes</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{ i.image }}" width="1**" height="100">
+                                    {% for k in i.attributes %}
+                                        <p class="card-text">{{ k.trait_type }} {{ k.value }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 
 
 {% endblock content %}
